@@ -20,7 +20,7 @@ class ResultViewController: UIViewController {
         getResult()
         navigationItem.hidesBackButton = true
         
-        resultLabel.text = "Вы - \(String(describing: result.first?.rawValue))"
+        resultLabel.text = "Вы - \(result.first?.rawValue ?? Animal.horse.rawValue)"
         resultDefinition.text = result.first?.defenition
     }
     
@@ -29,7 +29,7 @@ class ResultViewController: UIViewController {
         var resultData: [Animal:Int] = [:]
         
         for answers in answersChosen {
-            resultData[answers.animal] = (resultData[answers.animal] ?? 0) + 1
+            resultData[answers.animal, default: 0] += 1
         }
         result = resultData.sorted { $0.value > $1.value }.map { $0.key }
     }
