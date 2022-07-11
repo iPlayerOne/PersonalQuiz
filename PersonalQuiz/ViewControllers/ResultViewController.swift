@@ -21,7 +21,7 @@ class ResultViewController: UIViewController {
         navigationItem.hidesBackButton = true
         
         resultLabel.text = "Вы - \(result.first?.rawValue ?? Animal.horse.rawValue)"
-        resultDefinition.text = result.first?.defenition
+        resultDefinition.text = result.first?.defenition ?? Animal.horse.defenition
     }
     
     private func getResult() {
